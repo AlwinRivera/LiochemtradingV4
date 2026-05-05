@@ -134,8 +134,16 @@
       box-shadow: 0 4px 30px rgba(0,0,0,.35);
       padding: 10px 0;
     }
-    .navbar-brand img { height: 42px; transition: height var(--transition); }
-    #mainNav.scrolled .navbar-brand img { height: 34px; }
+    .navbar-brand img {
+      height: 46px;
+      transition: height var(--transition), filter var(--transition);
+      filter: brightness(0) invert(1);
+    }
+    #mainNav.scrolled .navbar-brand img {
+      height: 38px;
+      /* Full color logo on solid navy bg — teal reads perfectly, invert navy to white */
+      filter: brightness(0) invert(1);
+    }
     .navbar-nav .nav-link {
       font-family: var(--font-head);
       font-weight: 600;
@@ -360,7 +368,7 @@
       box-shadow: 0 20px 50px rgba(0,0,0,.13);
     }
     .service-img {
-      height: 180px;
+      height: 220px;
       overflow: hidden;
       position: relative;
     }
@@ -415,21 +423,21 @@
     }
     .about-badge {
       position: absolute;
-      bottom: -24px; right: -24px;
+      bottom: 24px; right: 24px;
       background: var(--teal);
       color: var(--navy);
-      padding: 28px;
+      padding: 20px 24px;
       border-radius: 4px;
       font-family: var(--font-head);
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-transform: uppercase;
-      box-shadow: 0 10px 30px rgba(0,184,160,.4);
+      box-shadow: 0 10px 30px rgba(0,184,160,.5);
       line-height: 1.2;
       text-align: center;
     }
     .about-badge span {
-      font-size: 3rem;
+      font-size: 2.6rem;
       display: block;
       line-height: 1;
     }
@@ -489,65 +497,87 @@
     .product-card {
       background: var(--white);
       border-radius: 6px;
-      padding: 30px;
+      padding: 28px;
       border-left: 4px solid var(--teal);
-      box-shadow: 0 2px 20px rgba(0,0,0,.06);
+      box-shadow: 0 2px 20px rgba(0,0,0,.07);
       transition: all var(--transition);
       height: 100%;
     }
     .product-card:hover {
-      box-shadow: 0 15px 40px rgba(0,0,0,.12);
+      box-shadow: 0 15px 40px rgba(0,0,0,.13);
       transform: translateY(-4px);
+      background: var(--navy);
     }
+    .product-card:hover h5 { color: var(--white); }
+    .product-card:hover p  { color: rgba(255,255,255,.6); }
     .product-card h5 {
       font-family: var(--font-head);
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       text-transform: uppercase;
       color: var(--navy);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      transition: color var(--transition);
     }
-    .product-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .product-card p { transition: color var(--transition); }
+    .product-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 4px; }
     .product-tag {
       background: rgba(0,184,160,.1);
       color: var(--teal);
       font-family: var(--font-head);
-      font-weight: 600;
-      font-size: .75rem;
+      font-weight: 700;
+      font-size: .72rem;
       letter-spacing: .08em;
       text-transform: uppercase;
-      padding: 4px 10px;
+      padding: 5px 11px;
       border-radius: 20px;
-      border: 1px solid rgba(0,184,160,.2);
+      border: 1px solid rgba(0,184,160,.25);
+      transition: all var(--transition);
+    }
+    .product-card:hover .product-tag {
+      background: rgba(0,184,160,.2);
+      border-color: rgba(0,184,160,.5);
     }
     .product-img-wrap {
       border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,.15);
+      box-shadow: 0 30px 60px rgba(0,0,0,.2);
+      position: relative;
+    }
+    .product-img-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,184,160,.15), transparent 60%);
     }
     .product-img-wrap img { width: 100%; display: block; }
 
     /* ===== WHY US ===== */
-    #why { background: var(--white); }
+    #why { background: var(--light); }
     .why-item {
-      padding: 32px;
+      padding: 36px 32px;
       border-radius: 6px;
-      border: 1px solid rgba(0,0,0,.07);
+      background: var(--white);
+      border-bottom: 4px solid transparent;
+      box-shadow: 0 2px 20px rgba(0,0,0,.06);
       transition: all var(--transition);
       height: 100%;
     }
     .why-item:hover {
-      border-color: var(--teal);
-      box-shadow: 0 10px 40px rgba(0,0,0,.08);
+      border-bottom-color: var(--teal);
+      box-shadow: 0 15px 40px rgba(0,0,0,.12);
+      transform: translateY(-4px);
     }
     .why-num {
       font-family: var(--font-head);
-      font-size: 3rem;
+      font-size: 4.5rem;
       font-weight: 800;
-      color: rgba(0,184,160,.15);
+      color: var(--teal);
+      opacity: .2;
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      transition: opacity var(--transition);
     }
+    .why-item:hover .why-num { opacity: .4; }
     .why-item h5 {
       font-family: var(--font-head);
       font-weight: 700;
@@ -684,7 +714,6 @@
 
     /* ===== FOOTER ===== */
     footer { background: var(--navy); padding: 50px 0 0; }
-    .footer-logo { height: 48px; margin-bottom: 18px; }
     .footer-desc {
       font-size: .9rem;
       color: rgba(255,255,255,.45);
@@ -760,8 +789,21 @@
     @media (max-width: 767px) {
       .section-pad { padding: 65px 0; }
       .hero-stats { gap: 24px; }
-      .about-badge { bottom: 12px; right: 12px; padding: 18px; }
+      .about-badge { bottom: 12px; right: 12px; padding: 16px; }
       .about-badge span { font-size: 2rem; }
+    }
+    /* Wider breathing room for large screens */
+    @media (min-width: 1400px) {
+      .container { max-width: 1320px; }
+    }
+    @media (min-width: 1600px) {
+      .container { max-width: 1480px; }
+    }
+    /* Footer logo — white version on dark bg */
+    .footer-logo {
+      height: 48px;
+      margin-bottom: 18px;
+      filter: brightness(0) invert(1);
     }
   </style>
 </head>

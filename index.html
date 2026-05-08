@@ -127,12 +127,12 @@
     #mainNav {
       background: transparent;
       transition: background var(--transition), box-shadow var(--transition);
-      padding: 18px 0;
+      padding: 18px 15px;
     }
     #mainNav.scrolled {
       background: var(--navy) !important;
       box-shadow: 0 4px 30px rgba(0,0,0,.35);
-      padding: 10px 0;
+      padding: 10px 15px;
     }
     .navbar-brand img {
       height: 46px;
@@ -797,6 +797,7 @@
       .hero-stats { gap: 24px; }
       .about-badge { bottom: 12px; right: 12px; padding: 16px; }
       .about-badge span { font-size: 2rem; }
+      .navbar-nav .nav-link { padding: 8px 0 !important; }
     }
     /* Wider breathing room for large screens */
     @media (min-width: 1400px) {
